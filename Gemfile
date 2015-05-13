@@ -41,6 +41,11 @@ group :development do
 end
 
 group :development, :test do
+  # Useful error pages
+  gem 'better_errors'
+  # Remove assets requests from logs
+  gem 'quiet_assets'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
