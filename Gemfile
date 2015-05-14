@@ -43,16 +43,26 @@ end
 group :development, :test do
   # Useful error pages
   gem 'better_errors'
+  gem 'binding_of_caller'
   # Remove assets requests from logs
   gem 'quiet_assets'
-
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # BDD
+  gem 'spinach-rails'
+  # Testing tools
+  gem 'rspec-rails'
+  # Testing simplifier
+  gem 'shoulda-matchers', require: false
+  gem 'test-unit'
+  # Test user interaction
+  gem 'capybara', '~> 2.2.1'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+  # Generate Fake data
+  gem 'ffaker'
+  # Rails panel chrome extension support
+  gem 'meta_request'
 end
 
