@@ -52,9 +52,6 @@ group :development, :test do
   gem 'spinach-rails'
   # Testing tools
   gem 'rspec-rails'
-  # Testing simplifier
-  gem 'shoulda-matchers', require: false
-  gem 'test-unit'
   # Test user interaction
   gem 'capybara', '~> 2.2.1'
   gem 'database_cleaner'
@@ -62,6 +59,9 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Generate Fake data
   gem 'ffaker'
+  # Testing simplifier
+  gem 'shoulda-matchers', require: false
+  gem 'test-unit'
   # Rails panel chrome extension support
   gem 'meta_request'
 end
