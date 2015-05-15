@@ -33,6 +33,9 @@ gem 'puma'
 # Slugs
 gem 'friendly_id'
 
+# Users
+gem 'devise'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
