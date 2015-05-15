@@ -45,6 +45,9 @@ gem 'has_scope'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Heroku optional requirement
+gem 'rails_12factor', group: :production
+
 group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
