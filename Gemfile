@@ -36,6 +36,12 @@ gem 'friendly_id'
 # Users
 gem 'devise'
 
+# Dry up controllers
+gem 'responders'
+
+# Controller resource filters
+gem 'has_scope'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
