@@ -4,7 +4,8 @@ RSpec.describe Content, type: :model do
 
   # Validations
   it { should validate_presence_of(:title) }
-  it { should validate_uniqueness_of(:title) }
+  it { should validate_presence_of(:slug) }
+  it { should validate_uniqueness_of(:slug) }
   it { should validate_presence_of(:plot) }
 
   it 'has a valid factory' do
