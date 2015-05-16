@@ -1,0 +1,1 @@
+json.array! @contents, :id, :slug, :type, :title, :plot
