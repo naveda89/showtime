@@ -23,4 +23,9 @@ RSpec.describe Purchase, type: :model do
     expect(purchase).to be_valid
   end
 
+  it 'has an alive checker' do
+    purchase = build(:purchase)
+    expect(purchase).to respond_to :alive?
+  end
+
 end
