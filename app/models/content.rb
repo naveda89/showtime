@@ -15,6 +15,6 @@ class Content < ActiveRecord::Base
   # Scopes
   scope :newest, -> { order('created_at DESC') }
   scope :oldest, -> { order('created_at ASC') }
-  scope :by_type, proc { |t| where('type is ?', t) }
+  scope :by_type, proc { |t| where(type: t) }
 
 end
