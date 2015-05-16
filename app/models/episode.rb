@@ -6,4 +6,7 @@ class Episode < ActiveRecord::Base
   validates_presence_of :num
   validates_numericality_of :num
   validates_uniqueness_of :num, scope: :season_id
+
+  # Scopes
+  scope :num_order, -> { order('num ASC') }
 end
