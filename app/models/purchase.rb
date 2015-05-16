@@ -20,6 +20,7 @@ class Purchase < ActiveRecord::Base
 
   # Scopes
   scope :alive, -> { where('created_at >= ?', Time.now - ALIVE_TIME) }
+  scope :recent, -> { order('created_at DESC') }
 
   # Instance methods
   def alive?
