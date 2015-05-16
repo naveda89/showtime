@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
 
-
+  # REST API endpoints
   namespace :api, defaults: {format: 'json'} do
+    # Versioned API
     namespace :v1 do
-      resources :contents, only: [:index]
+      resources :contents, only: [:index] do
+        collection do
+          get 'movies' => :index, defaults: { by_type: 'Movie' }
+          get 'seasons' => :index, defaults: { by_type: 'Season' }
+        end
+      end
     end
   end
 

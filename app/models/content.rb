@@ -11,4 +11,10 @@ class Content < ActiveRecord::Base
   # Validations
   validates_presence_of :title, :plot, :slug
   validates_uniqueness_of :slug
+
+  # Scopes
+  scope :newest, -> { order('created_at DESC') }
+  scope :oldest, -> { order('created_at ASC') }
+  scope :by_type, proc { |t| where('type is ?', t) }
+
 end
