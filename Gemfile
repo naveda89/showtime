@@ -42,6 +42,9 @@ gem 'responders'
 # Controller resource filters
 gem 'has_scope'
 
+# Generate Fake data
+gem 'ffaker'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -72,8 +75,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'factory_girl_rails'
-  # Generate Fake data
-  gem 'ffaker'
   # Testing simplifier
   gem 'shoulda-matchers', require: false
   gem 'test-unit'
