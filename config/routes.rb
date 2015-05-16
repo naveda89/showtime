@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :contents, only: [:index, :show]
       resources :movies, only: [:index, :show], defaults: { by_type: 'Movie' }, controller: :contents
-      resources :seasons, only: [:index, :show], defaults: { by_type: 'Season' }, controller: :contents
+      resources :seasons, only: [:index, :show], defaults: { by_type: 'Season' }, controller: :contents do
+        resources :episodes, only: [:show]
+      end
     end
   end
 
