@@ -14,7 +14,7 @@ season_sd_po = PurchaseOption.create(quality: 'sd', price: FFaker::numerify('#.#
 
   # Seasons
   season = Season.create(title: FFaker::Name.name, plot: FFaker::Lorem.paragraph(4))
-  10.times { |n| season.episodes.create(num: n) }
+  10.times { |n| season.episodes.create(num: n, plot: FFaker::Lorem.paragraph(4)) }
   season.content_purchase_options.create(purchase_option_id: season_hd_po.id, active: true)
   season.content_purchase_options.create(purchase_option_id: season_sd_po.id, active: true)
 }
