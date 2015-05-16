@@ -45,6 +45,9 @@ gem 'has_scope'
 # Generate Fake data
 gem 'ffaker'
 
+# Convention over JSON generation
+gem 'active_model_serializers'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
