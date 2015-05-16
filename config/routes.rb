@@ -5,12 +5,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     # Versioned API
     namespace :v1 do
-      resources :contents, only: [:index] do
-        collection do
-          get 'movies' => :index, defaults: { by_type: 'Movie' }
-          get 'seasons' => :index, defaults: { by_type: 'Season' }
-        end
-      end
+      resources :contents, only: [:index, :show]
+      resources :movies, only: [:index, :show], defaults: { by_type: 'Movie' }, controller: :contents
+      resources :seasons, only: [:index, :show], defaults: { by_type: 'Season' }, controller: :contents
     end
   end
 

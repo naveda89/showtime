@@ -1,1 +1,3 @@
-json.array! @contents, :id, :slug, :type, :title, :plot
+json.array! @contents do |content|
+  json.partial! content, partial: 'content'
+end
