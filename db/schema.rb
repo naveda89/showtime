@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515165551) do
+ActiveRecord::Schema.define(version: 20150515194952) do
+
+  create_table "content_purchase_options", force: :cascade do |t|
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.integer  "purchase_option_id"
+    t.boolean  "active",                                     default: false
+    t.decimal  "price",              precision: 8, scale: 2
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
+  end
+
+  add_index "content_purchase_options", ["content_type", "content_id"], name: "index_content_purchase_options_on_content_type_and_content_id"
+  add_index "content_purchase_options", ["purchase_option_id"], name: "index_content_purchase_options_on_purchase_option_id"
 
   create_table "contents", force: :cascade do |t|
     t.string   "title"
@@ -52,6 +65,16 @@ ActiveRecord::Schema.define(version: 20150515165551) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "content_purchase_option_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "purchases", ["content_purchase_option_id"], name: "index_purchases_on_content_purchase_option_id"
+  add_index "purchases", ["user_id"], name: "index_purchases_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
