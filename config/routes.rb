@@ -1,20 +1,29 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  # Pagination concern
+  concern :paginatable do
+    get '(page/:page)', :action => :index, :on => :collection, :as => ''
+  end
+
   # REST API endpoints
   namespace :api, defaults: {format: 'json'} do
     # Versioned API
     namespace :v1 do
-      resources :contents, only: [:index, :show]
-      resources :movies, only: [:index, :show], defaults: { by_type: 'Movie' }, controller: :contents
-      resources :seasons, only: [:index, :show], defaults: { by_type: 'Season' }, controller: :contents do
+
+      ## CONTENTS
+      resources :contents,  only: [:index, :show], concerns: :paginatable
+      resources :movies,    only: [:index, :show], concerns: :paginatable, defaults: { by_type: 'Movie' },  controller: :contents
+      resources :seasons,   only: [:index, :show], concerns: :paginatable, defaults: { by_type: 'Season' }, controller: :contents do
         resources :episodes, only: [:show]
       end
 
-      resources :purchases, only: [:index, :show]
+      ## PURCHASES
+      resources :purchases, only: [:index, :show], concerns: :paginatable
       resources :content_purchase_options, only: [] do
         resource :purchase, only: [:create]
       end
+
     end
   end
 
