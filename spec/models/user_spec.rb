@@ -13,4 +13,9 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
+  it 'has a valid "with purchases" factory' do
+    user = create(:user_with_purchases)
+    expect(user).to be_valid
+  end
+
 end
