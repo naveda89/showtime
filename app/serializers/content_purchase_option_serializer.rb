@@ -1,7 +1,4 @@
 class ContentPurchaseOptionSerializer < ActiveModel::Serializer
-  attributes :id, :price, :quality, :purchase_url
-
-  def purchase_url
-    api_v1_content_purchase_option_purchase_path(object)
-  end
+  cache key: 'content_purchase_option', expires_in: 3.hours
+  attributes :id, :price, :quality
 end

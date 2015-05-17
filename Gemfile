@@ -46,7 +46,12 @@ gem 'has_scope'
 gem 'ffaker'
 
 # Convention over JSON generation
-gem 'active_model_serializers'
+gem 'active_model_serializers',
+    github: 'rails-api/active_model_serializers',
+    branch: '0-10-stable' # Caching well implemented
+
+# Caching
+gem 'redis-rails'
 
 # Pagination
 gem 'kaminari'

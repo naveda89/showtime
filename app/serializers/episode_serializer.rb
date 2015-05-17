@@ -1,7 +1,4 @@
 class EpisodeSerializer < ActiveModel::Serializer
-  attributes :id, :num, :plot, :url
-
-  def url
-    api_v1_season_episode_path(object.season, object)
-  end
+  cache key: 'episode', expires_in: 3.hours
+  attributes :id, :num, :plot
 end

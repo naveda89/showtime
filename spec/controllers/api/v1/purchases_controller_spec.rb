@@ -21,6 +21,8 @@ RSpec.describe Api::V1::PurchasesController, type: :controller do
       get :index, user_id: user.id, format: :json
       expect_json_types('purchases.*', {id: :integer, price: :string, quality: :string, content: :object})
     end
+
+    it 'returns only alive purchases'
   end
 
   describe 'POST #create' do
@@ -37,7 +39,7 @@ RSpec.describe Api::V1::PurchasesController, type: :controller do
       expect_status 403
     end
 
-    it 'returns error when trying to purchase the same content' do
+    it 'returns error when trying to purchase the same alive content' do
       movie_purchase_option = create(:movie_purchase_option)
       post :create, content_purchase_option_id: movie_purchase_option.id, format: :json, user_id: user.id
       post :create, content_purchase_option_id: movie_purchase_option.id, format: :json, user_id: user.id
