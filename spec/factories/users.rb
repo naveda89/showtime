@@ -7,7 +7,8 @@ FactoryGirl.define do
 
     factory :user_with_purchases, parent: :user do
       after(:create) do |user|
-        user.purchases << create(:purchase, user_id: user.id)
+        user.purchases << create(:movie_purchase, user_id: user.id)
+        user.purchases << create(:season_purchase, user_id: user.id)
       end
     end
   end

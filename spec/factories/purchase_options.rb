@@ -1,7 +1,10 @@
 FactoryGirl.define do
   factory :purchase_option do
-    price FFaker.numerify '#.##'
     quality 'hd'
+
+    after(:build) do |purchase_option|
+      purchase_option.price = FFaker.numerify '#.##'
+    end
 
     factory :purchase_option_hd, parent: :purchase_option do
       quality 'hd'
