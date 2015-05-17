@@ -16,7 +16,7 @@ RSpec.describe Api::V1::ContentsController, type: :controller do
     it 'returns valid contents' do
       get :index, format: :json
       expect_json_sizes({contents: 2})
-      expect_json_types('contents.*', {type: :string, slug: :string, title: :string, content_purchase_options: :array})
+      expect_json_types('contents.*', {type: :string, slug: :string, title: :string, url: :string, content_purchase_options: :array})
     end
 
     describe '/movies' do
