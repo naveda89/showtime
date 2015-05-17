@@ -59,8 +59,12 @@ gem 'kaminari'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Heroku optional requirement
-gem 'rails_12factor', group: :production
+group :production do
+  # Heroku optional requirement
+  gem 'rails_12factor', group: :production
+  # Metrics
+  gem 'newrelic_rpm'
+end
 
 group :development do
   # Use sqlite3 as the database for Active Record
