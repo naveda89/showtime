@@ -1,65 +1,66 @@
 require 'rails_helper'
+require 'airborne'
 
 RSpec.describe Api::V1::ContentsController, type: :controller do
-  render_views
-  let(:json) { JSON.parse(response.body) }
 
   describe 'GET #index' do
 
-    it 'returns all contents' do
-      movie = create(:movie)
-      season = create(:season)
+    let!(:movie) { create(:movie) }
+    let!(:season) { create(:season) }
 
+    it 'returns 200 response' do
       get :index, format: :json
-      expect(response.status).to eq 200
-
-      titles = json.map { |m| m['title'] }
-      expect(titles).to match_array([movie.title, season.title])
+      expect_status 200
     end
 
-    it 'renders the :index template' do
+    it 'returns valid contents' do
       get :index, format: :json
-      expect(response).to render_template :index
+      expect_json_sizes({contents: 2})
+      expect_json_types('contents.*', {type: :string, slug: :string, title: :string, content_purchase_options: :array})
     end
 
-  end
-
-  describe 'GET #index/movies' do
-
-    it 'returns all movies' do
-      movie1 = create(:movie)
-      movie2 = create(:movie)
-
-      get :index, format: :json
-      expect(response.status).to eq 200
-
-      titles = json.map { |m| m['title'] }
-      expect(titles).to match_array([movie1.title, movie2.title])
+    describe '/movies' do
+      it 'returns all movies' do
+        get :index, by_type: 'Movie', format: :json
+        expect_status 200
+        expect_json_sizes({contents: 1})
+      end
     end
 
-    it 'renders the :index template' do
-      get :index, format: :json
-      expect(response).to render_template :index
+    describe '/seasons' do
+      it 'returns all seasons' do
+        get :index, by_type: 'Season', format: :json
+        expect_status 200
+        expect_json_sizes({contents: 1})
+      end
     end
 
   end
 
-  describe 'GET #index/seasons' do
+  describe 'GET #show' do
 
-    it 'returns all seasons' do
-      season1 = create(:season)
-      season2 = create(:season)
-
-      get :index, format: :json
-      expect(response.status).to eq 200
-
-      titles = json.map { |m| m['title'] }
-      expect(titles).to match_array([season1.title, season2.title])
+    it 'returns 200 response' do
+      content = create(:content)
+      get :show, format: :json, id: content.id
+      expect_status 200
     end
 
-    it 'renders the :index template' do
-      get :index, format: :json
-      expect(response).to render_template :index
+    describe '/movies' do
+      it 'returns movie' do
+        movie = create(:movie)
+        get :show, id: movie.id, by_type: 'Movie', format: :json
+        expect_json_keys('movie', [:type, :slug, :title, :plot, :content_purchase_options])
+        expect_status 200
+      end
+    end
+
+    describe '/seasons' do
+      it 'returns season' do
+        season = create(:season)
+        get :show, id: season.id, by_type: 'Season', format: :json
+        expect_json_keys('season', [:type, :slug, :title, :plot, :episodes, :content_purchase_options])
+        expect_status 200
+      end
     end
 
   end

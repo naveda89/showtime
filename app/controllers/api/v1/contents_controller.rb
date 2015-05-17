@@ -9,11 +9,12 @@ module Api
 
       def index
         @contents = scoped.all
-        respond_with(@contents)
+        respond_with @contents
       end
 
       def show
         @content = scoped.find(params[:id])
+        respond_with @content
       end
 
       private
