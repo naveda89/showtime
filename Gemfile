@@ -81,6 +81,8 @@ group :development, :test do
   # Testing simplifier
   gem 'shoulda-matchers', require: false
   gem 'test-unit'
+  # API Testing
+  gem 'airborne'
   # Rails panel chrome extension support
   gem 'meta_request'
 end
