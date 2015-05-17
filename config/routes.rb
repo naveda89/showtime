@@ -10,6 +10,11 @@ Rails.application.routes.draw do
       resources :seasons, only: [:index, :show], defaults: { by_type: 'Season' }, controller: :contents do
         resources :episodes, only: [:show]
       end
+
+      resources :purchases, only: [:index, :show]
+      resources :content_purchase_options, only: [] do
+        resource :purchase, only: [:create]
+      end
     end
   end
 

@@ -15,6 +15,9 @@ RSpec.describe Purchase, type: :model do
   describe 'ActiveRecord validations' do
     it { should validate_presence_of(:user) }
     it { should validate_presence_of(:content_purchase_option) }
+    it { should validate_uniqueness_of(:user_id)
+                    .scoped_to(:content_purchase_option_id)
+                    .with_message(/has this content purchase option still alive/) }
   end
 
   # Factory

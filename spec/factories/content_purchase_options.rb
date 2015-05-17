@@ -12,6 +12,15 @@ FactoryGirl.define do
     factory :inactive_content_purchase_option, parent: :content_purchase_option do
       active false
     end
+
+    factory :movie_purchase_option, parent: :content_purchase_option do
+      association :content, factory: :movie
+    end
+
+    factory :season_purchase_option, parent: :content_purchase_option do
+      association :content, factory: :season
+    end
+
   end
 
 end

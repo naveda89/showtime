@@ -45,6 +45,9 @@ gem 'has_scope'
 # Generate Fake data
 gem 'ffaker'
 
+# Convention over JSON generation
+gem 'active_model_serializers'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -78,6 +81,8 @@ group :development, :test do
   # Testing simplifier
   gem 'shoulda-matchers', require: false
   gem 'test-unit'
+  # API Testing
+  gem 'airborne'
   # Rails panel chrome extension support
   gem 'meta_request'
 end

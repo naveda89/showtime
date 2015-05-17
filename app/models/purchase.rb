@@ -9,6 +9,9 @@ class Purchase < ActiveRecord::Base
 
   # Validations
   validates_presence_of :user, :content_purchase_option
+  validates_uniqueness_of :user_id, scope: :content_purchase_option_id,
+                          if: Proc.new { |purchase| purchase.alive? },
+                          message: 'has this content purchase option still alive'
 
   # Delegators
   delegate :active, to: :content_purchase_option
@@ -17,9 +20,11 @@ class Purchase < ActiveRecord::Base
 
   # Scopes
   scope :alive, -> { where('created_at >= ?', Time.now - ALIVE_TIME) }
+  scope :recent, -> { order('created_at DESC') }
 
   # Instance methods
   def alive?
-    self.created_at >= Time.now - ALIVE_TIME
+    return self.new_record? unless self.created_at
+    self.created_at >= (Time.now - ALIVE_TIME)
   end
 end
