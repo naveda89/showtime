@@ -3,6 +3,9 @@ class Content < ActiveRecord::Base
   include FriendlyId
   friendly_id :title, use: :slugged
 
+  # Pagination
+  paginates_per 5
+
   # Associations
   has_many :content_purchase_options
   has_many :purchase_options, through: :content_purchase_options

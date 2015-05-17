@@ -2,8 +2,13 @@ module Api
   module V1
     class PurchasesController < ApiController
 
+      # Callbacks
       skip_before_filter :verify_authenticity_token, only: :create
       before_filter :load_user
+
+      # Scopes
+      # Pagination
+      has_scope :page, default: 1
 
       def index
         @purchases = purchases

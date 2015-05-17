@@ -2,6 +2,9 @@ class Purchase < ActiveRecord::Base
   # Constants
   ALIVE_TIME = 2.days
 
+  # Pagination
+  paginates_per 5
+
   # Associations
   belongs_to :user
   belongs_to :content_purchase_option
