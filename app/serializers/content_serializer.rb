@@ -9,5 +9,4 @@ class ContentSerializer < ActiveModel::Serializer
   def url
     api_v1_content_path(object)
   end
-
 end
