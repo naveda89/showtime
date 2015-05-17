@@ -16,7 +16,7 @@ RSpec.describe Api::V1::ContentsController, type: :controller do
     it 'returns valid contents' do
       get :index, format: :json
       expect_json_sizes({contents: 2})
-      expect_json_types('contents.*', {type: :string, slug: :string, title: :string, url: :string, content_purchase_options: :array})
+      expect_json_types('contents.*', {type: :string, slug: :string, title: :string, content_purchase_options: :array})
     end
 
     describe '/movies' do
@@ -49,7 +49,7 @@ RSpec.describe Api::V1::ContentsController, type: :controller do
       it 'returns movie' do
         movie = create(:movie)
         get :show, id: movie.id, by_type: 'Movie', format: :json
-        expect_json_keys('movie', [:type, :slug, :title, :plot, :content_purchase_options])
+        expect_json_keys('content', [:type, :slug, :title, :plot, :content_purchase_options])
         expect_status 200
       end
     end
@@ -58,7 +58,7 @@ RSpec.describe Api::V1::ContentsController, type: :controller do
       it 'returns season' do
         season = create(:season)
         get :show, id: season.id, by_type: 'Season', format: :json
-        expect_json_keys('season', [:type, :slug, :title, :plot, :episodes, :content_purchase_options])
+        expect_json_keys('content', [:type, :slug, :title, :plot, :episodes, :content_purchase_options])
         expect_status 200
       end
     end

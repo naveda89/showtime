@@ -12,22 +12,23 @@ module Api
 
       def index
         @purchases = purchases
-        respond_with :api, :v1, @purchases
+        respond_with :api, :v1, @purchases, root: 'purchases'
       end
 
       def show
         @purchase = purchases.find(params[:id])
-        respond_with :api, :v1, @purchase
+        respond_with :api, :v1, @purchase, root: 'purchase'
       end
 
       def create
         @purchase = purchases.create(content_purchase_option_id: params[:content_purchase_option_id])
-        respond_with :api, :v1, @purchase
+        return respond_with :api, :v1, @purchase, root: 'purchase' if @purchase.valid?
+        render text: @purchase.errors.to_json, status: :unprocessable_entity
       end
 
       private
       def purchases
-        @purchases ||= apply_scopes(@purchases_user.purchases.recent)
+        @purchases ||= apply_scopes(@purchases_user.purchases.alive.recent)
       end
 
       def load_user
