@@ -6,6 +6,8 @@ module Api
       has_scope :newest, type: :boolean
       has_scope :oldest, type: :boolean, default: true
       has_scope :by_type
+      # Pagination
+      has_scope :page, default: 1
 
       def index
         @contents = scoped.all
