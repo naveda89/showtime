@@ -2,7 +2,8 @@ module Api
   module V1
     class PurchasesController < ApiController
 
-      skip_before_filter :verify_authenticity_token, :only => :create
+      skip_before_filter :verify_authenticity_token, only: :create
+      before_filter :load_user
 
       def index
         @purchases = purchases
@@ -21,11 +22,12 @@ module Api
 
       private
       def purchases
-        @purchases ||= apply_scopes(purchases_user.purchases.recent)
+        @purchases ||= apply_scopes(@purchases_user.purchases.recent)
       end
 
-      def purchases_user
-        @purchases_user ||= User.find(params[:user_id])
+      def load_user
+        return if @purchases_user = User.find_by_id(params[:user_id])
+        render json: { error: 'user id required' }, status: :forbidden
       end
 
     end
