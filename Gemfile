@@ -48,6 +48,9 @@ gem 'ffaker'
 # Convention over JSON generation
 gem 'active_model_serializers'
 
+# Pagination
+gem 'kaminari'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
