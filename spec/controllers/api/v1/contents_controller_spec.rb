@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'airborne'
 
 RSpec.describe Api::V1::ContentsController, type: :controller do
 
