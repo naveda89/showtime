@@ -6,7 +6,7 @@ season_hd_po = PurchaseOption.create(quality: 'hd', price: FFaker::numerify('#.#
 season_sd_po = PurchaseOption.create(quality: 'sd', price: FFaker::numerify('#.##'))
 
 # Contents (Movie/Season)
-5.times {
+20.times {
   # Movies
   movie = Movie.create(title: FFaker::Name.name, plot: FFaker::Lorem.paragraph(4))
   movie.content_purchase_options.create(purchase_option_id: movie_hd_po.id, active: true)
