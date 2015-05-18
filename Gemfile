@@ -97,5 +97,7 @@ group :development, :test do
   gem 'airborne'
   # Rails panel chrome extension support
   gem 'meta_request'
+  # Time dependant testing
+  gem 'timecop'
 end
 

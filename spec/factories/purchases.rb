@@ -11,6 +11,7 @@ FactoryGirl.define do
     factory :season_purchase, parent: :purchase do
       association :content_purchase_option, factory: :season_purchase_option
     end
+
   end
 
 end

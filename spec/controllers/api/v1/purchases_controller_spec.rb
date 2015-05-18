@@ -22,7 +22,12 @@ RSpec.describe Api::V1::PurchasesController, type: :controller do
       expect_json_types('purchases.*', {id: :integer, price: :string, quality: :string, content: :object})
     end
 
-    it 'returns only alive purchases'
+    it 'returns only alive purchases' do
+      Timecop.freeze(Date.today + 3.days) do
+        get :index, user_id: user.id, format: :json
+        expect_json_sizes({purchases: 0})
+      end
+    end
   end
 
   describe 'POST #create' do
