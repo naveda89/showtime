@@ -8,7 +8,7 @@ RSpec.describe Api::V1::PurchasesController, type: :controller do
 
     it 'returns a 200 response' do
       get :index, user_id: user.id, format: :json
-      expect(response.status).to eq 200
+      expect_status 200
     end
 
     it 'returns purchases' do
@@ -57,7 +57,7 @@ RSpec.describe Api::V1::PurchasesController, type: :controller do
     it 'returns a 200 response' do
       purchase = user.purchases.first
       get :show, id: purchase.id, user_id: user.id, format: :json
-      expect(response.status).to eq 200
+      expect_status 200
     end
 
     it 'returns the purchase' do
