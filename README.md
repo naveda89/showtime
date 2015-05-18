@@ -50,16 +50,20 @@ Run `rspec` on terminal.
 ```
 
 ### Movies
-- `/api/v1/movies`
-- `/api/v1/movies/:id`
+- GET `/api/v1/movies`
+- GET `/api/v1/movies/:id`
 
 ### Seasons / Episodes
-- `/api/v1/seasons`
-- `/api/v1/seasons/:id`
-- `/api/v1/seasons/:season_id/episodes/:id`
+- GET `/api/v1/seasons`
+- GET `/api/v1/seasons/:id`
+- GET `/api/v1/seasons/:season_id/episodes/:id`
 
 ### Purchases
-- `/api/v1/purchases` **user_id** parameter required!
+> **user_id** parameter required!
+
+- GET `/api/v1/purchases`
+- GET `/api/v1/purchases/:id`
+- POST `/api/v1/content_purchase_options/:content_purchase_option_id/purchase` - **Create a purchase**
 
 ## Pagination
 > In route pagination:
