@@ -13,7 +13,7 @@ foreman start
 ```
 ## Testing
 Run `rspec` on terminal.
-> Source available at [**specs**](/specs) directory.
+> Source available at [**spec**](/spec) directory.
 
 ## Resources endpoints
 > All results are paginated
