@@ -1,10 +1,13 @@
 GIT
-  remote: git://github.com/rails-api/active_model_serializers.git
-  revision: 1577969cb76309d1f48c68facc73e44c49489744
+  remote: https://github.com/rails-api/active_model_serializers.git
+  revision: 0fbe0fad0dec9368e9335b6280a46ca13442727e
   branch: 0-10-stable
   specs:
-    active_model_serializers (0.10.0.rc1)
-      activemodel (>= 4.0)
+    active_model_serializers (0.10.13)
+      actionpack (>= 4.1, < 7.1)
+      activemodel (>= 4.1, < 7.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
 
 GEM
   remote: https://rubygems.org/
@@ -66,6 +69,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    case_transform (0.2)
+      activesupport
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -75,6 +80,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     colorize (0.7.7)
+    concurrent-ruby (1.1.10)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
     devise (3.4.1)
@@ -107,7 +113,8 @@ GEM
       activesupport (>= 3.2, < 5)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    i18n (0.7.0)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -116,6 +123,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.2)
+    jsonapi-renderer (0.2.2)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
